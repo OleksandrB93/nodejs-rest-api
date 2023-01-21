@@ -1,7 +1,7 @@
 const contactsOperations = require("../../models/constantsModel");
 const { NotFound } = require("http-errors");
 
-const updateById = async (req, res, next) => {
+const updateById = async (req, res) => {
   const { contactId } = req.params;
   const result = await contactsOperations.updateContact(contactId, req.body);
   if (!result) {

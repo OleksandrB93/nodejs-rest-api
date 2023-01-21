@@ -1,7 +1,7 @@
 const contactsOperations = require("../../models/constantsModel");
 const { NotFound } = require("http-errors");
 
-const deleteById = async (req, res, next) => {
+const deleteById = async (req, res) => {
   const { contactId } = req.params;
   const result = await contactsOperations.removeContact(contactId);
   if (!result) {
