@@ -16,7 +16,7 @@ router.post("/", validateMiddleware, ctrlWrapper(ctrl.add));
 
 router.delete("/:contactId", ctrlWrapper(ctrl.deleteById));
 
-router.put("/:contactId", validateMiddleware, ctrlWrapper(ctrl.updateById));
+router.put("/:contactId", ctrlWrapper(ctrl.updateById));
 
 module.exports = router;
 
