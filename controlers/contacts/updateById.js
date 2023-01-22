@@ -7,13 +7,7 @@ const updateById = async (req, res) => {
   if (!result) {
     throw new NotFound(`Product with id=${contactId} not found`);
   }
-  res.json({
-    status: "success",
-    code: 200,
-    data: {
-      result,
-    },
-  });
+  res.json(result);
 };
 
 module.exports = updateById;

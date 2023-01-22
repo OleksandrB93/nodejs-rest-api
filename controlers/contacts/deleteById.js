@@ -7,14 +7,7 @@ const deleteById = async (req, res) => {
   if (!result) {
     throw new NotFound(`Contact with id=${contactId} not found`);
   }
-  res.json({
-    status: "success",
-    code: 200,
-    message: "contact deleted",
-    data: {
-      result,
-    },
-  });
+  res.json(result);
 };
 
 module.exports = deleteById;
