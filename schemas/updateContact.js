@@ -1,9 +1,9 @@
 const Joi = require("joi");
 
 const updateSchema = Joi.object({
-  name: Joi.string().allow(''),
-  phone: Joi.string().allow(''),
-  email: Joi.string().allow('')
+  name: Joi.string(),
+  phone: Joi.string(),
+  email: Joi.string(),
 });
 
 module.exports = updateSchema;
