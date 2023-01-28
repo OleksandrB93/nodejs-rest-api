@@ -7,7 +7,9 @@ const updateSchema = Joi.object({
     tlds: { allow: ["com", "net"] },
   }),
   phone: Joi.string(),
-  favorite: Joi.bool(),
+  favorite: Joi.boolean(),
 });
 
-module.exports = updateSchema;
+module.exports = {
+  updateSchema,
+};

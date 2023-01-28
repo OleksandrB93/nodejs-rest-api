@@ -2,13 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 const { validation, ctrlWrapper } = require("../../middlewares");
-const {
-  contactsSchema,
-  updateSchema,
-} = require("../../schemas");
+const { contactsSchema, updateSchema, statusSchema } = require("../../schemas");
 
 const validateMiddleware = validation(contactsSchema);
 const updateValidateMiddleware = validation(updateSchema);
+const updateFavoriteMiddleware = validation(statusSchema);
 
 const { contacts: ctrl } = require("../../controlers");
 
@@ -28,7 +26,7 @@ router.put(
 
 router.patch(
   "/:contactId/favorite",
-  updateValidateMiddleware,
+  updateFavoriteMiddleware,
   ctrlWrapper(ctrl.updateStatus)
 );
 

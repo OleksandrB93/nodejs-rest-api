@@ -8,7 +8,7 @@ const getById = async (req, res) => {
   const result = await Contact.findById(contactId);
 
   if (!result) {
-    throw new NotFound(`Contact with id=${contactId} not found`);
+    throw NotFound(`Contact with id=${contactId} not found`);
   }
   res.json(result);
 };

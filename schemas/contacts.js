@@ -4,7 +4,7 @@ const contactSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().required(),
   phone: Joi.string().required(),
-  favorite: Joi.bool(),
+  favorite: Joi.boolean().default(false),
 });
 
 module.exports = contactSchema;
