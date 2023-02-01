@@ -1,4 +1,4 @@
-const { Contact } = require("../../models/mongoSchemaAndModel");
+const { Contact } = require("../../models/contacts");
 
 const { NotFound } = require("http-errors");
 
