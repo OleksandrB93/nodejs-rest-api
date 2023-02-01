@@ -1,4 +1,4 @@
-const { Contact } = require("../../schemas/mongoSchemaAndModel");
+const { Contact } = require("../../models/mongoSchemaAndModel");
 
 const add = async (req, res) => {
   const result = await Contact.create(req.body);

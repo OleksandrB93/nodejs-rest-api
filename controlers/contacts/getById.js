@@ -1,6 +1,6 @@
 const { NotFound } = require("http-errors");
 
-const { Contact } = require("../../schemas/mongoSchemaAndModel");
+const { Contact } = require("../../models/mongoSchemaAndModel");
 
 const getById = async (req, res) => {
   const { contactId } = req.params;

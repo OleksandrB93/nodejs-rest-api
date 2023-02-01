@@ -1,6 +1,6 @@
 const { NotFound } = require("http-errors");
 
-const { Contact } = require("../../schemas/mongoSchemaAndModel");
+const { Contact } = require("../../models/mongoSchemaAndModel");
 
 const deleteById = async (req, res) => {
   const { contactId } = req.params;
@@ -12,7 +12,3 @@ const deleteById = async (req, res) => {
 };
 
 module.exports = deleteById;
-
-
-
-

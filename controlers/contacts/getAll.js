@@ -1,4 +1,4 @@
-const { Contact } = require("../../schemas/mongoSchemaAndModel");
+const { Contact } = require("../../models/mongoSchemaAndModel");
 
 const getAll = async (req, res) => {
   const contacts = await Contact.find({});
