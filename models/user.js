@@ -19,12 +19,6 @@ const userSchema = Schema(
       default: "starter",
     },
     token: String,
-    contacts: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "contact",
-      },
-    ],
   },
   { versionKey: false, timestamps: true }
 );
