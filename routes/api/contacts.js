@@ -12,20 +12,22 @@ const { contacts: ctrl } = require("../../controlers");
 
 router.get("/", auth, ctrlWrapper(ctrl.getAll));
 
-router.get("/:contactId", ctrlWrapper(ctrl.getById));
+router.get("/:contactId", auth, ctrlWrapper(ctrl.getById));
 
 router.post("/", auth, validateMiddleware, ctrlWrapper(ctrl.add));
 
-router.delete("/:contactId", ctrlWrapper(ctrl.deleteById));
+router.delete("/:contactId", auth, ctrlWrapper(ctrl.deleteById));
 
 router.put(
   "/:contactId",
+  auth,
   updateValidateMiddleware,
   ctrlWrapper(ctrl.updateById)
 );
 
 router.patch(
   "/:contactId/favorite",
+  auth,
   updateFavoriteMiddleware,
   ctrlWrapper(ctrl.updateStatus)
 );
