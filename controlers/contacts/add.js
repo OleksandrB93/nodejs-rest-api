@@ -1,7 +1,10 @@
-const { Contact } = require("../../schemas/mongoSchemaAndModel");
+const { Contact } = require("../../models/contacts");
+const ObjectId = require('mongodb').ObjectId
 
 const add = async (req, res) => {
-  const result = await Contact.create(req.body);
+  const { _id } = ObjectId(req.user);
+
+  const result = await Contact.create({ ...req.body, owner: _id });
   res.status(201).json(result);
 };
 

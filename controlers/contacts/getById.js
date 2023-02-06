@@ -1,14 +1,16 @@
 const { NotFound } = require("http-errors");
+const { Contact } = require("../../models/contacts");
 
-const { Contact } = require("../../schemas/mongoSchemaAndModel");
+const ObjectId = require("mongodb").ObjectId;
 
 const getById = async (req, res) => {
-  const { contactId } = req.params;
+  const owner = req.user._id;
+  const _id = ObjectId(req.params.contactId);
 
-  const result = await Contact.findById(contactId);
+  const result = await Contact.findOne({ owner, _id });
 
   if (!result) {
-    throw NotFound(`Contact with id=${contactId} not found`);
+    throw NotFound(`Contact with id=${_id} not found`);
   }
   res.json(result);
 };
