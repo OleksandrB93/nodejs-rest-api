@@ -5,7 +5,7 @@ const { Contact } = require("../../models/contacts");
 
 const deleteById = async (req, res) => {
   const owner = req.user._id;
-  const id = ObjectId(req.params.contactId);
+  const _id = ObjectId(req.params.contactId);
 
   const result = await Contact.findOneAndRemove({owner, _id });
 
