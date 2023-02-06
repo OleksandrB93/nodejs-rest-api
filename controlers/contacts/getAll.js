@@ -2,8 +2,7 @@ const { Contact } = require("../../models/contacts");
 const ObjectId = require("mongodb").ObjectId;
 
 const getAll = async (req, res) => {
-  const { _id } = req.user;
-  ObjectId(_id);
+  const { _id } = ObjectId(req.user);
   
   const { page = 1, limit = 10 } = req.query;
   const skip = (page - 1) * limit;

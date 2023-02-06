@@ -4,11 +4,11 @@ const ObjectId = require("mongodb").ObjectId;
 
 const updateStatusContact = async (req, res) => {
   const owner = req.user._id;
-  const id = ObjectId(req.params.contactId);
+  const _id = ObjectId(req.params.contactId);
   const { favorite } = req.body;
 
   const result = await Contact.findOneAndUpdate(
-    { owner, id },
+    { owner, _id },
     { $set: { favorite } },
     { new: true }
   );
