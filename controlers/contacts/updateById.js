@@ -4,14 +4,15 @@ const ObjectId = require("mongodb").ObjectId;
 const { NotFound } = require("http-errors");
 
 const updateById = async (req, res) => {
-  const { contactId } = req.params;
-  ObjectId(contactId);
+  const owner = req.user._id;
+  const id = ObjectId(req.params.contactId);
 
-  const result = await Contact.findByIdAndUpdate(contactId, req.body, {
-    new: true,
-  });
+  const result = await Contact.findOneAndUpdate(
+    { owner, id },
+    { $set: req.body },
+  );
   if (!result) {
-    throw new NotFound(`Product with id=${contactId} not found`);
+    throw new NotFound(`Product with id=${id} not found`);
   }
   res.json(result);
 };

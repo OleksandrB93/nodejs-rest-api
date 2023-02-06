@@ -1,17 +1,16 @@
 const { NotFound } = require("http-errors");
-
 const { Contact } = require("../../models/contacts");
+const ObjectId = require("mongodb").ObjectId;
 
 const updateStatusContact = async (req, res) => {
-  const { contactId } = req.params;
+  const owner = req.user._id;
+  const id = ObjectId(req.params.contactId);
   const { favorite } = req.body;
 
-  const result = await Contact.findByIdAndUpdate(
-    contactId,
-    { favorite },
-    {
-      new: true,
-    }
+  const result = await Contact.findOneAndUpdate(
+    { owner, id },
+    { $set: { favorite } },
+    { new: true }
   );
 
   if (!result) {
